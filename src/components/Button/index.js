@@ -14,6 +14,7 @@ class Button extends React.Component {
                 return dispatch(resetCounter(quantity));
             default:
                 console.log("operation unexists");
+                break;
         }
     };
 
