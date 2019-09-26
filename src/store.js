@@ -8,14 +8,17 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "MANAGE_COUNTER":
+        case "ADD_COUNTER":
             return Object.assign({}, state, {
-                counter:
-                    action.operation === "add"
-                        ? state.counter + action.quantity
-                        : action.operation === "subtract"
-                        ? state.counter - action.quantity
-                        : 0
+                counter: state.counter + action.quantity
+            });
+        case "SUBTRACT_COUNTER":
+            return Object.assign({}, state, {
+                counter: state.counter - action.quantity
+            });
+        case "RESET_COUNTER":
+            return Object.assign({}, state, {
+                counter: action.quantity
             });
         default:
             return state;
@@ -23,10 +26,23 @@ export const reducer = (state = initialState, action) => {
 };
 
 //actions
-export const manageCounter = (quantity = 0, operation = "add") => dispatch => {
+export const addCounter = (quantity = 0) => dispatch => {
     return dispatch({
-        type: "MANAGE_COUNTER",
-        operation: operation || "add",
+        type: "ADD_COUNTER",
+        quantity: quantity || 0
+    });
+};
+
+export const subtractCounter = (quantity = 0) => dispatch => {
+    return dispatch({
+        type: "SUBTRACT_COUNTER",
+        quantity: quantity || 0
+    });
+};
+
+export const resetCounter = (quantity = 0) => dispatch => {
+    return dispatch({
+        type: "RESET_COUNTER",
         quantity: quantity || 0
     });
 };

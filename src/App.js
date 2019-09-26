@@ -10,7 +10,7 @@ class App extends React.Component {
                 Contador: {this.props.counter} <br />
                 <Button text="Sumar" operation="add" quantity={1} />
                 <Button text="Restar" operation="subtract" quantity={1} />
-                <Button text="Reiniciar" operation="reset" />
+                <Button text="Reiniciar" operation="reset" quantity={0} />
             </div>
         );
     }
